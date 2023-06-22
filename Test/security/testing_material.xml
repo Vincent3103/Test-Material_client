@@ -1,0 +1,17 @@
+<data>
+	<record model="ir.module.category" id="testing_material_group_category">
+            <field name="name">Testing Material</field>
+            <field name="description">Group Category for Testing Material Module</field>
+    	</record>
+
+    	<record model="res.groups" id="testing_admin">
+            <field name="name">Testing Material Admin</field>
+            <field name="category_id" ref="testing_material_group_category"/>
+        </record>
+
+			<record model="res.groups" id="testing_editor">
+            <field name="name">Testing Material Editor</field>
+            <field name="category_id" ref="testing_material_group_category"/>
+        </record>
+
+ </data>

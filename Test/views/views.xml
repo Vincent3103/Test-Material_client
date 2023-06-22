@@ -1,0 +1,111 @@
+<odoo>
+  <data>
+
+    <!-- View for Testing Master Material -->
+    <record model="ir.ui.view" id="testing_material_search">
+      <field name="name">testing_material_search.filter</field>
+      <field name="model">testing_master_material</field>
+      <field name="arch" type="xml">
+        <search string="Master Material Type">
+          <field name="type"/>
+        </search> 
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testing_material_tree">
+      <field name="name">testing_master_material.tree</field>
+      <field name="model">testing_master_material</field>
+      <field name="arch" type="xml">
+        <tree string="Material" default_order="create_date desc">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="type"/>
+          <field name="price"/>
+          <field name="supplier"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testing_material_form">
+      <field name="name">testing_master_material.form</field>
+      <field name="model">testing_master_material</field>
+      <field name="arch" type="xml">
+        <form string="Material Form">
+          <group>
+            <group string ="Material Information">
+              <field name="code" required="1"/>
+              <field name="name" required="1"/>
+              <field name="type" required="1"/>
+              <field name="price" required="1"/>
+              <field name="supplier" required="1" options="{'no_create_edit': True, 'no_open': True}"/>
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- View for Testing Supplier -->
+    <record model="ir.ui.view" id="testing_supplier_search">
+      <field name="name">testing_supplier_search.filter</field>
+      <field name="model">testing.supplier</field>
+      <field name="arch" type="xml">
+        <search string="Supplier Name">
+          <field name="name"/>
+        </search> 
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testing_supplier_tree">
+      <field name="name">testing.supplier.tree</field>
+      <field name="model">testing.supplier</field>
+      <field name="arch" type="xml">
+        <tree string="Supplier" default_order="create_date desc">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testing_supplier_form">
+      <field name="name">testing.supplier.form</field>
+      <field name="model">testing.supplier</field>
+      <field name="arch" type="xml">
+        <form string="Supplier Form">
+          <group>
+            <group string ="Supplier Information">
+              <field name="name" required="1"/>
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="testing_material_action">
+      <field name="name">Materials</field>
+      <field name="res_model">testing_master_material</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="search_view_id" ref="testing_material_search" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Click here to add new document</p>
+      </field>
+    </record>
+    <menuitem id="materials_root" name="Testing Material Log" sequence="40"/>
+    <menuitem id="testing_master_material" name="Materials" parent="materials_root" sequence="10" action="testing_material_action"/>
+
+
+    <record model="ir.actions.act_window" id="testing_supplier_action">
+      <field name="name">Suppliers</field>
+      <field name="res_model">testing.supplier</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="search_view_id" ref="testing_supplier_search" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Click here to add new document</p>
+      </field>
+    </record>
+    <menuitem id="testing_supplier" name="Suppliers" parent="materials_root" sequence="20" action="testing_supplier_action"/>
+
+  </data>
+</odoo>
